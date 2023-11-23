@@ -1,23 +1,22 @@
-<header class="fundo">
+<header class="fundo" style="align-items: center;">
     <div class="title struct"> Restaurant Manager </div>
-
-    <form>
+    <form class="struct" style="flex-direction: column;">
         <div class="form-floating mb-3 input">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" style="width: 100%;" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Email address</label>
           </div>
-          <div class="form-floating struct input">
+          <div class="form-floating input">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
           </div>
     </form>
 
-    <div class="struct" style="margin-top: 20px;">
-        <div>
-            <button type="button" class="button struct">Login</button>
+    <div class="struct" style="margin-top: 5%;">
+        <div style="margin-right: 10%;">
+            <button type="button" class="btn btn-light" (click)="NavigateToHomePage">Login</button>
         </div>
         <div>
-            <button type="button" class="button struct">Register</button>
+            <button type="button" class="btn btn-light" (click)="NavigateToRegister()">Register</button>
         </div>
     </div>
 </header>

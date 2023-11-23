@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  constructor() {};
+  constructor(private router: Router) {};
+
+  NavigateToRegister(): void{
+    this.router.navigate(['register']);
+  }
+
+  NavigateToHomePage(): void{
+    this.router.navigate(['']);
+  }
 
   username: string = "";
   password: string = "";
