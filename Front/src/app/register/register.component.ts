@@ -14,10 +14,10 @@ export class RegisterComponent {
   constructor(private router: Router) {};
 
   NavigateToLogin(): void{
-    this.router.navigate(['login']); // com dados
+    this.router.navigate(['']); // com dados
   }
 
   NavigateToCancel(): void{
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
 }

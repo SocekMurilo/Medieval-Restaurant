@@ -18,9 +18,12 @@ export class LoginComponent {
   }
 
   NavigateToHomePage(): void{
-    this.router.navigate(['']);
+    if (this.username == "adm")
+      this.router.navigate(['admin']);
+    else 
+      this.router.navigate(['user']);
   }
 
-  username: string = "";
+  username: string = "adm";
   password: string = "";
 }
