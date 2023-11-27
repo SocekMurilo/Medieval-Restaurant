@@ -1,0 +1,13 @@
+
+.struct{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    background-color: white;
+    height: 5%; 
+    margin-top: 2vw; 
+    border-radius: 20px;
+}
