@@ -17,7 +17,7 @@ create table Users(
 	CPF varchar(20) not null,
 	IsAdm bit not null,
 	Salt varchar(200) not null,
-	Password varchar(MAX) not null
+	Password varchar(MAX) not null,
 );
 go
 
