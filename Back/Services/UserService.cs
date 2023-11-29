@@ -17,27 +17,46 @@ public class UserService : IUserService
         this.security = security;
     }
 
-    public async Task Create(UserData data)
+    public async Task Create(UserDataRegister data)
     {
-        Usuario usuario = new Usuario();
+        User user = new User();
         var salt = await security.GenerateSalt();
 
-        usuario.Nome = data.Login;
-        usuario.Senha = await security.HashPassword(
+        user.Name = data.Name;
+        user.Password = await security.HashPassword(
             data.Password, salt
-        );
-        usuario.Salt = salt;
+        );  
 
-        this.ctx.Add(usuario);
+        user.Salt = salt;
+        user.Email = data.Email;
+        user.Cpf = data.Cpf;
+        user.IsAdm = data.IsAdm;
+
+        this.ctx.Add(user);
+        await this.ctx.SaveChangesAsync();
+    }
+    public async Task Login(UserData data)
+    {
+        User user = new User();
+        var salt = await security.GenerateSalt();
+
+        user.Name = data.Login;
+        user.Password = await security.HashPassword(
+            data.Password, salt
+        );  
+        user.IsAdm = data.IsAdm;
+        user.Salt = salt;
+
+        this.ctx.Add(user);
         await this.ctx.SaveChangesAsync();
     }
 
-    public async Task<Usuario> GetByLogin(string login)
+    public async Task<User> GetByLogin(string login)
     {
         var query =
-            from u in this.ctx.Usuarios
-            where u.Nome == login
-            select u;
+            from user in this.ctx.Users
+            where user.Name == login
+            select user;
         
         return await query.FirstOrDefaultAsync();
     }

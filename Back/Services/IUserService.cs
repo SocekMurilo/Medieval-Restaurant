@@ -7,6 +7,7 @@ using Model;
 
 public interface IUserService
 {
-    Task Create(UserData data);
-    Task<Usuario> GetByLogin(string login);
+    Task Create(UserDataRegister data);
+    Task Login(UserData data);
+    Task<User> GetByLogin(string login);
 }

@@ -10,23 +10,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Back.Controllers;
 
+using Trevisharp.Security.Jwt;
+
 using DTO;
 using Model;
 using Services;
+using Microsoft.Extensions.Logging;
 
 [ApiController]
 [Route("user")]
 public class UserController : ControllerBase
 {
-    [HttpPost("login")]
+    [HttpPost("register")]
     [EnableCors("DefaultPolicy")]
-    public async Task<IActionResult> Login(
-        [FromBody]UserData user,
+    public async Task<IActionResult> Create(
+        [FromBody]UserDataRegister user,
         [FromServices]IUserService service,
-        [FromServices]ISecurityService security)
+        [FromServices]ISecurityService security,
+        [FromServices]CryptoService crypto)
     {
         var loggedUser = await service
-            .GetByLogin(user.Login);
+            .GetByLogin(user.Name);
         
         if (loggedUser == null)
             return Unauthorized("Usuário não existe.");
@@ -34,21 +38,20 @@ public class UserController : ControllerBase
         var password = await security.HashPassword(
             user.Password, loggedUser.Salt
         );
-        var realPassword = loggedUser.Senha;
+        var realPassword = loggedUser.Password;
         if (password != realPassword)
-            return Unauthorized("Senha incorreta.");
+            return Unauthorized("Incorrect Password.");
         
-        var jwt = await security.GenerateJwt(new {
-            id = loggedUser.Id,
-            photoId = loggedUser.ImagemId
+        var jwt = crypto.GetToken(new {
+            id = loggedUser.Iduser
         });
         
         return Ok(new { jwt });
     }
 
-    [HttpPost("register")]
+    [HttpPost("login")]
     [EnableCors("DefaultPolicy")]
-    public async Task<IActionResult> Create(
+    public async Task<IActionResult> Login(
         [FromBody]UserData user,
         [FromServices]IUserService service)
     {
@@ -61,89 +64,96 @@ public class UserController : ControllerBase
         if (errors.Count > 0)
             return BadRequest(errors);
 
-        await service.Create(user);
+        await service.Login(user);
         return Ok();
     }
 
-    [HttpDelete]
-    [EnableCors("DefaultPolicy")]
-    public IActionResult DeleteUser()
-    {
-        throw new NotImplementedException();
-    }
+    // [HttpDelete]
+    // [EnableCors("DefaultPolicy")]
+    // public IActionResult DeleteUser()
+    // {
+    //     throw new NotImplementedException();
+    // }
 
-    [HttpGet("image")]
-    [EnableCors("DefaultPolicy")]
-    public async Task<IActionResult> GetImage(
-        int photoId,
-        [FromServices]ISecurityService security,
-        [FromServices]DonOrgDbContext ctx)
-    {
-        var query =
-            from image in ctx.Imagems
-            where image.Id == photoId
-            select image;
+    // [HttpGet("image")]
+    // [EnableCors("DefaultPolicy")]
+    // public async Task<IActionResult> GetImage(
+    //     int photoId,
+    //     [FromServices]ISecurityService security,
+    //     [FromServices]RestaurantMedievalDbContext ctx)
+    // {
+    //     var query =
+    //         from image in ctx.Images
+    //         where image.Idimage == photoId
+    //         select image;
         
-        var photo = await query.FirstOrDefaultAsync();
-        if (photo is null)
-            return NotFound();
+    //     var photo = await query.FirstOrDefaultAsync();
+    //     if (photo is null)
+    //         return NotFound();
 
-        return File(photo.Foto, "image/jpeg");
-    }
+    //     return File(photo.Photo, "image/jpeg");
+    // }
 
-    [DisableRequestSizeLimit]
-    [HttpPut("image")]
-    [EnableCors("DefaultPolicy")]
-    public async Task<IActionResult> AddImage(
-        [FromServices]ISecurityService security
-    )
-    {
-        var jwtData = Request.Form["jwt"];
-        var jwtObj = JsonSerializer
-            .Deserialize<JwtToken>(jwtData);
-        var jwt = jwtObj.jwt;
+    // [DisableRequestSizeLimit]
+    // [HttpPut("image")]
+    // [EnableCors("DefaultPolicy")]
+    // public async Task<IActionResult> AddImage(
+    //     [FromServices]ISecurityService security
+    // )
+    // {
+    //     var jwtData = Request.Form["jwt"];
+    //     var jwtObj = JsonSerializer
+    //         .Deserialize<JwtToken>(jwtData);
+    //     var jwt = jwtObj.jwt;
 
-        var userOjb = await security
-            .ValidateJwt<JwtPayload>(jwt);
-        if (userOjb is null)
-            return Unauthorized();
-        var userId = userOjb.id;
+    //     var userOjb = await security
+    //         .ValidateJwt<JwtPayload>(jwt);
+    //     if (userOjb is null)
+    //         return Unauthorized();
+    //     var userId = userOjb.id;
 
-        var files = Request.Form.Files;
-        if (files is null || files.Count == 0)
-            return BadRequest();
+    //     var files = Request.Form.Files;
+    //     if (files is null || files.Count == 0)
+    //         return BadRequest();
         
-        var file = Request.Form.Files[0];
-        if (file.Length < 1)
-            return BadRequest();
+    //     var file = Request.Form.Files[0];
+    //     if (file.Length < 1)
+    //         return BadRequest();
  
-        using MemoryStream ms = new MemoryStream();
-        await file.CopyToAsync(ms);
-        var data = ms.GetBuffer();
+    //     using MemoryStream ms = new MemoryStream();
+    //     await file.CopyToAsync(ms);
+    //     var data = ms.GetBuffer();
 
-        Imagem img = new Imagem();
-        img.Foto = data;
+    //     Image img = new Image();
+    //     img.Photo = data;
 
-        DonOrgDbContext ctx = new DonOrgDbContext();
-        ctx.Add(img);
-        await ctx.SaveChangesAsync();
+    //     RestaurantMedievalDbContext ctx = new RestaurantMedievalDbContext();
+    //     ctx.Add(img);
+    //     await ctx.SaveChangesAsync();
         
-        var query =
-            from user in ctx.Usuarios
-            where user.Id == userId
-            select user;
-        var loggedUser = query.FirstOrDefault();
-        loggedUser.ImagemId = img.Id;
+    //     var query =
+    //         from user in ctx.Users
+    //         where user.Iduser == userId
+    //         select user;
+    //     var loggedUser = query.FirstOrDefault();
+    //     // loggedUser.Idimage = img.Id;
 
-        await ctx.SaveChangesAsync();
+    //     await ctx.SaveChangesAsync();
 
-        return Ok();
-    }
+    //     return Ok();
+    // }
 
-    [HttpDelete("image")]
-    [EnableCors("DefaultPolicy")]
-    public IActionResult RemoveImage()
-    {
-        throw new NotImplementedException();
-    }
+    // [HttpDelete("image")]
+    // [EnableCors("DefaultPolicy")]
+    // public IActionResult RemoveImage()
+    // {
+    //     throw new NotImplementedException();
+    // }
+
+    // [HttpPost("Prduct")]
+    // [EnableCors("DefaultPolicy")]
+    // public IActionResult AddProduct()
+    // {
+
+    // }
 }

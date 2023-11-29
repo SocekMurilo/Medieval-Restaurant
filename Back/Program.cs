@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
+using Trevisharp.Security.Jwt;
+
 using Back.Model;
 using Back.Services;
 
@@ -13,6 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<RestaurantMedievalDbContext>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddSingleton<CryptoService>(p => new () {
+    InternalKeySize = 24,
+    UpdatePeriod = TimeSpan.FromDays(1),
+});
 builder.Services.AddSingleton<ISecurityService, SecurityService>();
 
 builder.Services.AddCors(options =>
