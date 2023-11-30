@@ -21,16 +21,16 @@ using Microsoft.Extensions.Logging;
 [Route("user")]
 public class UserController : ControllerBase
 {
-    [HttpPost("register")]
+    [HttpPost("login")]
     [EnableCors("DefaultPolicy")]
-    public async Task<IActionResult> Create(
-        [FromBody]UserDataRegister user,
+    public async Task<IActionResult> Login(
+        [FromBody]UserData user,
         [FromServices]IUserService service,
         [FromServices]ISecurityService security,
         [FromServices]CryptoService crypto)
     {
         var loggedUser = await service
-            .GetByLogin(user.Name);
+            .GetByLogin(user.Login);
         
         if (loggedUser == null)
             return Unauthorized("Usuário não existe.");
@@ -49,22 +49,22 @@ public class UserController : ControllerBase
         return Ok(new { jwt });
     }
 
-    [HttpPost("login")]
+    [HttpPost("register")]
     [EnableCors("DefaultPolicy")]
-    public async Task<IActionResult> Login(
-        [FromBody]UserData user,
+    public async Task<IActionResult> Create(
+        [FromBody]UserDataRegister user,
         [FromServices]IUserService service)
     {
         var errors = new List<string>();
-        if (user is null || user.Login is null)
-            errors.Add("É necessário informar um login.");
-        if (user.Login.Length < 5)
-            errors.Add("O Login deve conter ao menos 5 caracteres.");
+        if (user is null || user.Name is null)
+            errors.Add("You must provide a login.");
+        if (user.Name.Length < 5)
+            errors.Add("Login must contain at least 5 characters.");
 
         if (errors.Count > 0)
             return BadRequest(errors);
 
-        await service.Login(user);
+        await service.Create(user);
         return Ok();
     }
 

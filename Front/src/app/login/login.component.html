@@ -2,11 +2,11 @@
     <div class="title struct"> Restaurant Manager </div>
     <form class="struct" style="flex-direction: column;">
         <div class="form-floating mb-3 input">
-            <input type="email" class="form-control" style="width: 100%;" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" style="width: 100%;" id="floatingInput" placeholder="name@example.com" [(ngModel)] = "username">
             <label for="floatingInput">Email address</label>
           </div>
           <div class="form-floating input">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" >
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)] = "password" />
             <label for="floatingPassword">Password</label>
           </div>
     </form>

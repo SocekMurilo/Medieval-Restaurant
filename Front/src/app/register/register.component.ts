@@ -13,6 +13,12 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   constructor(private router: Router) {};
 
+  name: string = "";
+  sobrenome: string = "";
+  email: string = "";
+  password: string = "";
+  confirmPassword: string = "";
+
   NavigateToLogin(): void{
     this.router.navigate(['']); // com dados
   }

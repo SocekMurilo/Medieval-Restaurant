@@ -16,7 +16,6 @@ export const routes: Routes = [
         { path: "addproduct", component: AddProductComponent },
         { path: "totem", component: TotemComponent},
         { path: "orders", component: OrdersComponent}
-
     ]},
     {path: 'user', component: HomePageUserComponent},
 ];
