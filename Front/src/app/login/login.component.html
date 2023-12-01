@@ -2,21 +2,23 @@
     <div class="title struct"> Restaurant Manager </div>
     <form class="struct" style="flex-direction: column;">
         <div class="form-floating mb-3 input">
-            <input type="email" class="form-control" style="width: 100%;" id="floatingInput" placeholder="name@example.com" [(ngModel)] = "username">
+            <input type="email"  name="username" class="form-control" style="width: 100%;" id="floatingInput"
+                placeholder="name@example.com" [(ngModel)]="username">
             <label for="floatingInput">Email address</label>
-          </div>
-          <div class="form-floating input">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)] = "password" />
+        </div>
+        <div class="form-floating input">
+            <input type="password"  name="password" class="form-control" id="floatingPassword" placeholder="Password"
+                [(ngModel)]="password">
             <label for="floatingPassword">Password</label>
-          </div>
+        </div>
     </form>
 
     <div class="struct" style="margin-top: 5%;">
         <div style="margin-right: 10%;">
-            <button type="button" class="btn btn-light" (click)="NavigateToHomePage()">Login</button>
+            <button type="button" class="btn btn-light" (click)="HomePage()">Login</button>
         </div>
         <div>
-            <button type="button" class="btn btn-light" (click)="NavigateToRegister()">Register</button>
+            <button type="button" class="btn btn-light" (click)="Register()">Register</button>
         </div>
     </div>
 </header>

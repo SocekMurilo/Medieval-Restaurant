@@ -3,33 +3,41 @@
 
     <form class="struct" style="flex-direction: column;">
         <div class="form-floating mb-3 input">
-            <input type="text" class="form-control"  placeholder="name@example.com">
-            <label for="floatingInput">Name</label>
+            <input name="name" type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="name" />
+            <label for="floatingInput" >Name</label>
         </div>
         <div class="form-floating mb-3 input">
-            <input type="text" class="form-control" placeholder="name@example.com">
+            <input type="text" name="lastName" class="form-control" placeholder="name@example.com"
+                [(ngModel)]="lastName" />
             <label for="floatingInput">Last Name</label>
         </div>
         <div class="form-floating mb-3 input">
-            <input type="email" class="form-control" placeholder="name@example.com">
+            <input type="email" name="email" class="form-control" placeholder="name@example.com" [(ngModel)]="email" />
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating mb-3 input">
-            <input type="password" class="form-control" placeholder="name@example.com">
+            <input type="text" name="cpf" class="form-control" placeholder="000.000.000-00" [(ngModel)]="cpf" />
+            <label for="floatingInput">CPF</label>
+        </div>
+        <div class="form-floating mb-3 input">
+            <input type="password" name="password" class="form-control" placeholder="name@example.com"
+                [(ngModel)]="password" />
             <label for="floatingInput">Password</label>
         </div>
         <div class="form-floating input">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" name="confirmPassword" class="form-control" placeholder="Password"
+                [(ngModel)]="confirmPassword" />
             <label for="floatingPassword">Confirm Password</label>
         </div>
-    </form>
+        <!-- </form> -->
 
-    <div class="struct" style="margin-top: 5%;">
-        <div style="margin-right: 10%;">
-            <button type="button" class="btn btn-light" (click)="NavigateToLogin()">Register</button>
+
+        <div class="struct" style="margin-top: 5%;">
+            <div style="margin-right: 10%;">
+                <button type="button" class="btn btn-light" (click)="Register()">Register</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-light" (click)="Cancel()">Cancel</button>
+            </div>
         </div>
-        <div>
-            <button type="button" class="btn btn-light" (click)="NavigateToCancel()">Cancel</button>
-        </div>
-    </div>
-</header>
+        <!-- </header> -->

@@ -10,6 +10,10 @@ export class ApiClientService {
 
   constructor(private http: HttpClient) { }
 
+  get(url: String) {
+    return this.http.get(this.backend + url)
+  }
+
   post(url: String, obj: any) {
     return this.http.post(this.backend + url, obj)
   }

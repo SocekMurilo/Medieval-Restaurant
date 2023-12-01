@@ -30,20 +30,22 @@ public class UserController : ControllerBase
         [FromServices]CryptoService crypto)
     {
         var loggedUser = await service
-            .GetByLogin(user.Login);
-        
+            .GetByLogin(user.Username);
+        // System.Console.WriteLine(loggedUser);
         if (loggedUser == null)
             return Unauthorized("Usuário não existe.");
-        
+       
         var password = await security.HashPassword(
             user.Password, loggedUser.Salt
         );
+        //  System.Console.WriteLine(password);
         var realPassword = loggedUser.Password;
         if (password != realPassword)
             return Unauthorized("Incorrect Password.");
         
         var jwt = crypto.GetToken(new {
-            id = loggedUser.Iduser
+            id = loggedUser.Iduser,
+            isAdm = loggedUser.IsAdm
         });
         
         return Ok(new { jwt });
