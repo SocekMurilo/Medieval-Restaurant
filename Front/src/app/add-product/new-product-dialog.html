@@ -1,13 +1,18 @@
 <mat-card>
     <div class="form-floating mb-3 input" appearance="fill">
-        <input type="name"  name="username" class="form-control" style="width: 100%;" id="floatingInput"
-            placeholder="name@example.com" [(ngModel)]="name">
+        <input type="text"  name="name" class="form-control" style="width: 100%;" id="floatingInput"
+            placeholder="Name" [(ngModel)]="name">
         <label for="floatingInput">Name</label>
     </div>
     <div class="form-floating input" appearance="fill">
-        <input type="description" name="" class="form-control" id="floatingPassword" placeholder="Password"
+        <input type="text" name="description" class="form-control" id="floatingInput" placeholder="Description"
             [(ngModel)]="description">
-        <label for="floatingPassword">Description</label>
+        <label for="floatingInput">Description</label>
+    </div>
+    <div class="form-floating input" appearance="fill">
+        <input type="number" name="value" class="form-control" id="floatingInput" placeholder="Value"
+            [(ngModel)]="value">
+        <label for="floatingInput">R$: </label>
     </div>
     <div style="margin: 5% 0 0 5%;">
         <button type="button" class="btn btn-light" (click)="CreateProduct()">Create Product</button>

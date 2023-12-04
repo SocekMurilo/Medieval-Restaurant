@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ClientServiceService } from '../services/client-service.service';
+import { ClientService } from '../services/client-service.service';
 import { resourceLimits } from 'worker_threads';
 import { FormsModule } from '@angular/forms';
 
@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private router: Router, private client: ClientServiceService) {}
+  constructor(private router: Router, private client: ClientService) {}
 
   username: string = '';
   password: string = '';

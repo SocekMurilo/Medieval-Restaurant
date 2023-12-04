@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ClientServiceService } from '../services/client-service.service';
+import { ClientService } from '../services/client-service.service';
 import { FormsModule } from '@angular/forms';
 import { error } from 'console';
 import { ConnectableObservable } from 'rxjs';
@@ -15,7 +15,7 @@ import { ConnectableObservable } from 'rxjs';
 })
 
 export class RegisterComponent {
-  constructor(private router: Router, private client: ClientServiceService) {};
+  constructor(private router: Router, private client: ClientService) {};
 
 
   name: string = "";

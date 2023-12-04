@@ -7,7 +7,8 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { strict } from 'assert';
+import { ClientService } from '../services/client-service.service';
+
 
 import { FormsModule } from '@angular/forms';
 
@@ -34,12 +35,22 @@ export class AddProductComponent {
   styleUrl: './add-product.component.css',
 })
 export class NewProductDialog {
-  constructor(public dialogRef: MatDialogRef<NewProductDialog>) {}
+  constructor(public dialogRef: MatDialogRef<NewProductDialog>, private product: ClientService) {}
 
   name: string = '';
   description: string = '';
+  value: number = 0
 
   CreateProduct() {
+
+    this.product.CreateProduct({
+      name: this.name,
+      description: this.description,
+      value: this.value
+    });
+    console.log(this.name);
+    console.log(this.description);
+
     this.dialogRef.close();
   }
 }
