@@ -14,6 +14,11 @@
             [(ngModel)]="value">
         <label for="floatingInput">R$: </label>
     </div>
+    <div class="form-floating input" appearance="fill">
+        <input type="text" name="type" class="form-control" id="floatingInput" placeholder="Type"
+            [(ngModel)]="type">
+        <label for="floatingInput">Type</label>
+    </div>
     <div style="margin: 5% 0 0 5%;">
         <button type="button" class="btn btn-light" (click)="CreateProduct()">Create Product</button>
     </div>

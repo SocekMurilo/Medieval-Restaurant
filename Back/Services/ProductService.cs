@@ -21,6 +21,7 @@ public class ProductService : IProductService
         product.Name = data.Name;
         product.Description = data.Description;
         product.Value = data.Value;
+        product.Type = data.Type;
 
         this.ctx.Add(product);
         await this.ctx.SaveChangesAsync();

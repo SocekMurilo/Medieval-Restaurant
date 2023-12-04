@@ -13,7 +13,9 @@ public partial class Product
 
     public double Value { get; set; }
 
-    public int ImageId { get; set; }
+    public string Type { get; set; }
+
+    public int? ImageId { get; set; }
 
     public virtual Image Image { get; set; }
 

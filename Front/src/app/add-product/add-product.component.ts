@@ -40,13 +40,15 @@ export class NewProductDialog {
   name: string = '';
   description: string = '';
   value: number = 0
+  type: string = ""
 
   CreateProduct() {
 
     this.product.CreateProduct({
       name: this.name,
       description: this.description,
-      value: this.value
+      value: this.value,
+      type: this.type
     });
     console.log(this.name);
     console.log(this.description);

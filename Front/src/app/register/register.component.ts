@@ -34,16 +34,15 @@ export class RegisterComponent {
 
     else if(this.password !== this.confirmPassword)
       alert("Password is not the same as confirm password")
-
     else
     {
       this.username = this.name + " " + this.lastName;
-      const response = this.client.register({
+      this.client.register({
         name: this.username,
         email: this.email,
         cpf: this.cpf,
         password: this.password 
-      });
+      })
       this.router.navigate(['']);
     }
   }

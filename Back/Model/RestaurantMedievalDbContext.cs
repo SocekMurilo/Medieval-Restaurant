@@ -28,13 +28,14 @@ public partial class RestaurantMedievalDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=CT-C-001YU\\SQLEXPRESS;Initial Catalog=Restaurant_Medieval_DB;Integrated Security=True;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Image>(entity =>
         {
-            entity.HasKey(e => e.Idimage).HasName("PK__Image__365310E84E60429C");
+            entity.HasKey(e => e.Idimage).HasName("PK__Image__365310E8187B3B3A");
 
             entity.ToTable("Image");
 
@@ -44,7 +45,7 @@ public partial class RestaurantMedievalDbContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.Idorder).HasName("PK__Orders__5CBBCADB8AD4D148");
+            entity.HasKey(e => e.Idorder).HasName("PK__Orders__5CBBCADBF079C0CE");
 
             entity.Property(e => e.Idorder).HasColumnName("IDOrder");
             entity.Property(e => e.StartTime).HasColumnType("datetime");
@@ -58,7 +59,7 @@ public partial class RestaurantMedievalDbContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.Idproduct).HasName("PK__Product__4290D179AC96A657");
+            entity.HasKey(e => e.Idproduct).HasName("PK__Product__4290D179816EF16C");
 
             entity.ToTable("Product");
 
@@ -72,16 +73,19 @@ public partial class RestaurantMedievalDbContext : DbContext
                 .IsRequired()
                 .HasMaxLength(80)
                 .IsUnicode(false);
+            entity.Property(e => e.Type)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
 
             entity.HasOne(d => d.Image).WithMany(p => p.Products)
                 .HasForeignKey(d => d.ImageId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Product__ImageID__3B75D760");
         });
 
         modelBuilder.Entity<ProductOrder>(entity =>
         {
-            entity.HasKey(e => e.IdproductOrder).HasName("PK__ProductO__9FA59CC0ABA10040");
+            entity.HasKey(e => e.IdproductOrder).HasName("PK__ProductO__9FA59CC00F40147D");
 
             entity.ToTable("ProductOrder");
 
@@ -102,7 +106,7 @@ public partial class RestaurantMedievalDbContext : DbContext
 
         modelBuilder.Entity<Promotion>(entity =>
         {
-            entity.HasKey(e => e.Idpromotion).HasName("PK__Promotio__C76CC0D8D615D467");
+            entity.HasKey(e => e.Idpromotion).HasName("PK__Promotio__C76CC0D8A93C6D39");
 
             entity.ToTable("Promotion");
 
@@ -121,7 +125,7 @@ public partial class RestaurantMedievalDbContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Iduser).HasName("PK__Users__EAE6D9DF51901DE4");
+            entity.HasKey(e => e.Iduser).HasName("PK__Users__EAE6D9DFBEAD6358");
 
             entity.Property(e => e.Iduser).HasColumnName("IDUser");
             entity.Property(e => e.Cpf)

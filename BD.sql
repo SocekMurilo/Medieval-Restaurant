@@ -32,7 +32,8 @@ create table Product(
 	Name varchar(80) not null,
 	Description varchar(200) not null,
 	Value Float not null,
-	ImageID int references Image(IDImage) not null
+	Type varchar(50) not null,
+	ImageID int references Image(IDImage)
 );
 go
 
@@ -61,3 +62,6 @@ create table Promotion(
 	ProductID int references Product(IDProduct) not null
 );
 go
+
+select * from Users
+select * from Product

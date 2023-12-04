@@ -31,7 +31,7 @@ public class UserController : ControllerBase
     {
         var loggedUser = await service
             .GetByLogin(user.Username);
-        // System.Console.WriteLine(loggedUser);
+
         if (loggedUser == null)
             return Unauthorized("Usuário não existe.");
        
