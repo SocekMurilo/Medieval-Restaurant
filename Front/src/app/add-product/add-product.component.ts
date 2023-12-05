@@ -7,7 +7,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { ClientService } from '../services/client-service.service';
+import { ProductService } from '../services/product-service.service';
 
 
 import { FormsModule } from '@angular/forms';
@@ -20,11 +20,22 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './add-product.component.css',
 })
 export class AddProductComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private product: ProductService) {}
+
+  list1: any = []
+
+  ngOnInit(): void {
+    this.product.GetProduct().subscribe((data: any) => {
+      this.list1 = [];
+      data.forEach((x: any) => this.list1.push(x));
+    });
+  }
 
   AddProduct() {
     this.dialog.open(NewProductDialog);
   }
+
+
 }
 
 @Component({
@@ -35,7 +46,7 @@ export class AddProductComponent {
   styleUrl: './add-product.component.css',
 })
 export class NewProductDialog {
-  constructor(public dialogRef: MatDialogRef<NewProductDialog>, private product: ClientService) {}
+  constructor(public dialogRef: MatDialogRef<NewProductDialog>, private product: ProductService) {}
 
   name: string = '';
   description: string = '';
@@ -50,8 +61,6 @@ export class NewProductDialog {
       value: this.value,
       type: this.type
     });
-    console.log(this.name);
-    console.log(this.description);
 
     this.dialogRef.close();
   }

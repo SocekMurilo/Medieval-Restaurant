@@ -17,6 +17,7 @@ using Model;
 using Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Validations;
+using Microsoft.EntityFrameworkCore.Storage;
 
 [ApiController]
 [Route("product")]
@@ -41,33 +42,17 @@ public class ProductController : ControllerBase
         return Ok();
 
     }
-    // [HttpGet]
-    // [EnableCors("DefaultPolicy")]
-    // public async Task<IActionResult> Login(
-    //     [FromBody]UserData user,
-    //     [FromServices]IUserService service,
-    //     [FromServices]ISecurityService security,
-    //     [FromServices]CryptoService crypto)
-    // {
-    //     var loggedUser = await service
-    //         .GetByLogin(user.Username);
-    //     // System.Console.WriteLine(loggedUser);
-    //     if (loggedUser == null)
-    //         return Unauthorized("Usuário não existe.");
-       
-    //     var password = await security.HashPassword(
-    //         user.Password, loggedUser.Salt
-    //     );
-    //     //  System.Console.WriteLine(password);
-    //     var realPassword = loggedUser.Password;
-    //     if (password != realPassword)
-    //         return Unauthorized("Incorrect Password.");
-        
-    //     var jwt = crypto.GetToken(new {
-    //         id = loggedUser.Iduser,
-    //         isAdm = loggedUser.IsAdm
-    //     });
-        
-    //     return Ok(new { jwt });
-    // }
+    [HttpGet]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> Get(
+        [FromServices]IProductService service)
+        {
+            var product = await service.GetProducts();
+
+            var errors = new List<string>();
+            if (errors.Count > 0)
+                return BadRequest(errors);
+
+            return Ok(new{product});
+        }
 }

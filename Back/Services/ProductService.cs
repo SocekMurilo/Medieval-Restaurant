@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 
 namespace Back.Services;
 
+using System.Collections.Generic;
 using DTO;
+using Microsoft.AspNetCore.Mvc;
 using Model;
 
 public class ProductService : IProductService
@@ -26,6 +28,10 @@ public class ProductService : IProductService
         this.ctx.Add(product);
         await this.ctx.SaveChangesAsync();
     }
+
+    public async Task<List<Product>> GetProducts()
+        => await this.ctx.Products.ToListAsync();
+
 
     // public async Task Remove(ProductDataRegister data)
     // {
