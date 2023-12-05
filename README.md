@@ -9,8 +9,11 @@ ctrl + shift + p => reaload Window
 dotnet build
 
 .\createModels.ps1 CT-C-001YU\SQLEXPRESS Restaurant_Medieval_DB
+.\createModels.ps1 DESKTOP-V583768 Restaurant_Medieval_DB       
 dotnet add package Trevisharp.Security.Jwt --version 1.0.0
 dotnet add reference ..\DTO\DTO.csproj
+
+https://th.bing.com/th/id/OIG.SGe0t6jwNqh1sdTWk0B0?pid=ImgGn
 
 
 // Competencias:
