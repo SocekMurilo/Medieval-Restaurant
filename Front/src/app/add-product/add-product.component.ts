@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import {
@@ -10,7 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from '../services/product-service.service';
 
 
+
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -19,22 +22,30 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css',
 })
-export class AddProductComponent {
-  constructor(public dialog: MatDialog, private product: ProductService) {}
+export class AddProductComponent implements OnInit{
+  constructor(public dialog: MatDialog, private product: ProductService, private router: Router) {}
 
-  list1: any = []
+  listproduct: any[] = [];
 
-  ngOnInit(): void {
-    this.product.GetProduct().subscribe((data: any) => {
-      this.list1 = [];
-      data.forEach((x: any) => this.list1.push(x));
-    });
+  ngOnInit() {
+    this.product.GetProduct().subscribe(
+      (data: any) => {
+        this.listproduct = data;
+        console.log("produtos:", this.listproduct);
+      },
+      (error: any) => {
+        console.error('Erro ao obter produtos:', error);
+      }
+    );
   }
 
   AddProduct() {
     this.dialog.open(NewProductDialog);
   }
 
+  HomePage(){
+    this.router.navigate(['admin/addproduct']);
+  }
 
 }
 

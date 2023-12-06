@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiClientService } from './api-client.service';
 import { ProductData } from '../model/product-data';
-import { consumerAfterComputation } from '@angular/core/primitives/signals';
+import { Observable, map } from "rxjs";
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,11 @@ export class ProductService {
       .subscribe(response => console.log(response))
   }
 
-  GetProduct()
-  {
-    var product = this.http.get('product');
-    return product;
+  GetProduct(): Observable<any[]> {
+    return this.http.get('product')
+    .pipe(map((response: any) => {
+      return response;
+    })
+    );
   }
 }

@@ -1,21 +1,25 @@
 <header>
+    <div (click)="HomePage()" style="width: 100%; background-color: #281914; margin-bottom: 2%;" class="struct">
+        <img style="height: 12vh; width: 12vh; align-items: center;" src="../../assets/Logo.jfif" class="card-img-top"
+            alt="...">
+    </div>
     <div>
+        
         <div style="margin: 5% 0 0 5%;">
             <a class="btn btn-primary" style="width: 10%;" (click)="AddProduct()">Add Product</a>
         </div>
-        @for (item of list1; track item) {
         <div class="container text-center" style="margin-top: 10%;">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-3" *ngFor="let product of listproduct">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{item.name}}</h5>
+                            <h5 class="card-title">{{product.name}}</h5>
                             <p>
-                                <label class="card-text">{{item.description}}
+                                <label class="card-text">{{product.description}}
                                 </label>
                             </p>
                             <p>
-                                <label class="card-text">{{item.value}}
+                                <label class="card-text">{{product.value}}
                                 </label>
                             </p>
                             <a class="btn btn-primary">Edit</a>
@@ -24,7 +28,8 @@
                 </div>
             </div>
         </div>
-    }
+    </div>
+</header>
                 <!-- <div class="col-sm-3">
                     <div class="card">
                         <div class="card-body">
@@ -66,8 +71,6 @@
                 </div> 
             </div> 
         </div> -->
-    </div>
-</header>
 
 // sistema kds
 
