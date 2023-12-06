@@ -1,11 +1,11 @@
-<header style="margin: 0; padding: 0;">
+<header style="margin: 0; padding: 0; overflow-y: hidden;">
     <div style="width: 100%; background-color: #281914; position: fixed;" class="struct">
         <img style="height: 15vw; width: 15vw; align-items: center;" src="../../assets/Logo.jfif" class="card-img-top"
             alt="...">
     </div>
-    <div class="row" style=" height: 100vh;">
+    <div class="row" style=" height: 100vh; overflow-y: hidden;">
         <div class="col-sm-2"
-            style="background-color: white; display: flex; justify-content: center; flex-direction: column;">
+            style="background-color: white; display: flex; justify-content: center; flex-direction: column; padding-right: 0;">
             <div style="margin-bottom: 5%;">
                 <img style="width: 100%; align-items: center;" src="../../assets/Sopa.png" class="card-img-top buttons"
                     alt="...">
@@ -29,7 +29,7 @@
                         flex-wrap: wrap">
                             <img src="https://4.bp.blogspot.com/-c0EJGrdyIq8/WFpCvIV_HtI/AAAAAAAAAro/jfU5GYJf9AYuMjGdnB3YJT3vcpFbLDFQgCLcB/s1600/Pottage.png"
                                 class="card-img-top" alt="...">
-                            <h5 class="card-title">Name: {{product.name}}</h5>
+                            <p class="card-title" style="font-size: 120%;">Name: {{product.name}}</p>
                             <p>
                                 <label class="card-text">Description: {{product.description}}</label>
                             </p>
@@ -47,7 +47,20 @@
             </div>
         </div>
     </div>
+    <footer style="display: flex; justify-content: flex-end; align-items: center;">
+        <div class="struct" style="margin-top: 5%;">
+            <div style="margin-right: 10%;">
+                <button type="button" class="btn btn-light">Calcel</button>
+            </div>
+            <div>
+                <a href="http://localhost:4200/admin/totem"  class="footer-button">
+                    <h1>Cart</h1>
+                </a>
+            </div>
+        </div>
+    </footer>
 </header>
+
 <!-- <div class="offset-1 col-4">
     <div class="card">
         <div class="card-body">

@@ -7,6 +7,7 @@ import { AddProductComponent } from './add-product/add-product.component'
 import { TotemComponent } from "./totem/totem.component"
 import { OrdersComponent } from "./orders/orders.component"
 import { PromotionsComponent } from "./promotions/promotions.component"
+import { CartComponent } from "./cart/cart.component"
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -15,10 +16,14 @@ export const routes: Routes = [
     children: [
         { path: "", component: HomePageAdmComponent},
         { path: "addproduct", component: AddProductComponent },
-        { path: "totem", component: TotemComponent},
-        { path: "orders", component: OrdersComponent}
-    ]},
+        { path: "totem",
+        children: [
+            {path: "", component: TotemComponent},
+            {path: "cart", component: CartComponent},
+        ]},
+        {path: "orders", component: OrdersComponent}]},
     {path: 'user', component: HomePageUserComponent},
     {path: 'ticket', component: PromotionsComponent},
     
 ];
+    

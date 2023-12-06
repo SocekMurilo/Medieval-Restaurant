@@ -29,7 +29,6 @@ public class ProductController : ControllerBase
         [FromBody]ProductDataRegister product,
         [FromServices]IProductService service)
     {  
-        Console.WriteLine("Chegou no create");
         var errors = new List<string>();
         if (product is null || product.Name is null)
             errors.Add("You Product is Invalid");
@@ -48,7 +47,6 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> Get(
         [FromServices]IProductService service)
         {
-            Console.WriteLine("Chegou no c#");
             var product = await service.GetProducts();
 
             var errors = new List<string>();
