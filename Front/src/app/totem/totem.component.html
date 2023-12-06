@@ -1,51 +1,46 @@
 <header style="margin: 0; padding: 0;">
     <div style="width: 100%; background-color: #281914; position: fixed;" class="struct">
-        <img style="height: 20vw; width: 20vw; align-items: center;" src="../../assets/Logo.jfif" class="card-img-top"
+        <img style="height: 15vw; width: 15vw; align-items: center;" src="../../assets/Logo.jfif" class="card-img-top"
             alt="...">
     </div>
     <div class="row" style=" height: 100vh;">
-        <div class="col-sm-3"
+        <div class="col-sm-2"
             style="background-color: white; display: flex; justify-content: center; flex-direction: column;">
-            <div>
-                <img style="width: 100%; align-items: center;" src="../../assets/Sopa.png" class="card-img-top"
+            <div style="margin-bottom: 5%;">
+                <img style="width: 100%; align-items: center;" src="../../assets/Sopa.png" class="card-img-top buttons"
+                    alt="...">
+            </div>
+            <div style="margin-bottom: 5%;">
+                <img style="width: 100%; align-items: center;" src="../../assets/Bebida.png" class="card-img-top buttons"
                     alt="...">
             </div>
             <div>
-                <img style="width: 100%; align-items: center;" src="../../assets/Bebida.png" class="card-img-top"
-                    alt="...">
-            </div>
-            <div>
-                <img style="width: 100%; align-items: center;" src="../../assets/Bolo.png" class="card-img-top"
+                <img style="width: 100%; align-items: center;" src="../../assets/Bolo.png" class="card-img-top buttons"
                     alt="...">
             </div>
         </div>
         <div class="col-sm-9" style="margin-top: 13vh;">
             <div class="row">
-                <div class="offset-1 col-4">
+                <div class="offset-1 col-3" *ngFor="let product of listproduct" style="margin-bottom: 5%;">
                     <div class="card">
-                        <div class="card-body">
-                            <img src="https://vovopalmirinha.com.br/wp-content/uploads/2018/01/torta-de-carne-gisele-tesser.jpg"
-                                class="card-img-top" alt="...">
-                            <h5 class="card-title">Meat pie</h5>
-                            <p>
-                                <label class="card-text">Pie filled with meat, eggs, and spices.
-                                </label>
-                            </p>
-                            <a class="btn btn-primary">Add</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="offset-1 col-4">
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" style="display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        flex-wrap: wrap">
                             <img src="https://4.bp.blogspot.com/-c0EJGrdyIq8/WFpCvIV_HtI/AAAAAAAAAro/jfU5GYJf9AYuMjGdnB3YJT3vcpFbLDFQgCLcB/s1600/Pottage.png"
                                 class="card-img-top" alt="...">
-                            <h5 class="card-title">Pottage</h5>
+                            <h5 class="card-title">Name: {{product.name}}</h5>
                             <p>
-                                <label class="card-text">Vegetable and meat stew.
-                                </label>
+                                <label class="card-text">Description: {{product.description}}</label>
                             </p>
-                            <a class="btn btn-primary">Add</a>
+                            <p>
+                                <label class="card-text">R$: {{product.value}}</label>
+                            </p>
+                            <div style="display: flex; justify-content:space-between; align-items: center;">
+                                <a class="btn btn-primary">-</a>
+                                    <label class="card-text">{{product.qty}}</label>
+                                <a class="btn btn-primary">+</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,3 +48,17 @@
         </div>
     </div>
 </header>
+<!-- <div class="offset-1 col-4">
+    <div class="card">
+        <div class="card-body">
+            <img src="https://4.bp.blogspot.com/-c0EJGrdyIq8/WFpCvIV_HtI/AAAAAAAAAro/jfU5GYJf9AYuMjGdnB3YJT3vcpFbLDFQgCLcB/s1600/Pottage.png"
+                class="card-img-top" alt="...">
+            <h5 class="card-title">Pottage</h5>
+            <p>
+                <label class="card-text">Vegetable and meat stew.
+                </label>
+            </p>
+            <a class="btn btn-primary">Add</a>
+        </div>
+    </div>
+</div> -->

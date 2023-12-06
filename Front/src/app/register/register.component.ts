@@ -30,10 +30,16 @@ export class RegisterComponent {
   Register()
   {
     if (this.name == null || this.lastName == null || this.email == null || this.cpf == null || this.password == null || this.confirmPassword == null)
-      alert("Fill in all fields")
+      alert("Fill in all fields");
+    
+      else if (this.cpf.length > 14 || this.cpf.length < 11)
+      alert("CPF invalid"); 
 
-    else if(this.password !== this.confirmPassword)
-      alert("Password is not the same as confirm password")
+    else if (this.password !== this.confirmPassword)
+      alert("Password is not the same as confirm password");
+
+    
+
     else
     {
       this.username = this.name + " " + this.lastName;

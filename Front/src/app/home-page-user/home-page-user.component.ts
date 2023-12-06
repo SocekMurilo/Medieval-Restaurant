@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page-user',
@@ -9,5 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home-page-user.component.css'
 })
 export class HomePageUserComponent {
-    constructor() {}
+  constructor(private router: Router) {}
+
+  Ticket(): void {
+    this.router.navigate(['ticket']);
+  }
 }

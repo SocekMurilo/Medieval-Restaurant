@@ -6,6 +6,7 @@ import { HomePageAdmComponent } from './home-page-adm/home-page-adm.component';
 import { AddProductComponent } from './add-product/add-product.component'
 import { TotemComponent } from "./totem/totem.component"
 import { OrdersComponent } from "./orders/orders.component"
+import { PromotionsComponent } from "./promotions/promotions.component"
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -18,4 +19,6 @@ export const routes: Routes = [
         { path: "orders", component: OrdersComponent}
     ]},
     {path: 'user', component: HomePageUserComponent},
+    {path: 'ticket', component: PromotionsComponent},
+    
 ];

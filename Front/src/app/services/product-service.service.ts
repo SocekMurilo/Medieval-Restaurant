@@ -16,11 +16,8 @@ export class ProductService {
       .subscribe(response => console.log(response))
   }
 
-  GetProduct(): Observable<any[]> {
-    return this.http.get('product')
-    .pipe(map((response: any) => {
-      return response;
-    })
-    );
+  GetProduct(){
+    var a =  this.http.get("product");
+    return a;
   }
 }

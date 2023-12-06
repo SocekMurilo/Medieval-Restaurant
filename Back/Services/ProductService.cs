@@ -31,6 +31,9 @@ public class ProductService : IProductService
 
     public async Task<List<Product>> GetProducts()
         => await this.ctx.Products.ToListAsync();
+        
+    public async Task<List<Product>> GetProductsBytype()
+        => await this.ctx.Products.ToListAsync();
 
 
     // public async Task Remove(ProductDataRegister data)
