@@ -40,8 +40,8 @@ export class AddProductComponent implements OnInit {
     this.dialog.open(NewProductDialog);
   }
 
-  HomePage() {
-    this.router.navigate(['admin/addproduct']);
+  HomeAdm() {
+    this.router.navigate(['admin']);
   }
 }
 

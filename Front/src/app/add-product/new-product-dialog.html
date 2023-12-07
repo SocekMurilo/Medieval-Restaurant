@@ -1,25 +1,27 @@
-<mat-card>
-    <div class="form-floating mb-3 input" appearance="fill">
-        <input type="text"  name="name" class="form-control" style="width: 100%;" id="floatingInput"
-            placeholder="Name" [(ngModel)]="name">
-        <label for="floatingInput">Name</label>
-    </div>
-    <div class="form-floating input" appearance="fill">
-        <input type="text" name="description" class="form-control" id="floatingInput" placeholder="Description"
-            [(ngModel)]="description">
-        <label for="floatingInput">Description</label>
-    </div>
-    <div class="form-floating input" appearance="fill">
-        <input type="number" name="value" class="form-control" id="floatingInput" placeholder="Value"
-            [(ngModel)]="value">
-        <label for="floatingInput">R$: </label>
-    </div>
-    <div class="form-floating input" appearance="fill">
-        <input type="text" name="type" class="form-control" id="floatingInput" placeholder="Type"
-            [(ngModel)]="type">
-        <label for="floatingInput">Type</label>
-    </div>
-    <div style="margin: 5% 0 0 5%;">
-        <button type="button" class="btn btn-light" (click)="CreateProduct()">Create Product</button>
-    </div>
-</mat-card>
+<div class="modal-body" style="display: flex; align-items: center; justify-content: center;">
+    <form class="col-8">
+        <div class="form-floating" appearance="fill" style="width: 100%; margin-top: 10%; margin-bottom: 10%;" >
+            <input type="text" name="name" class="form-control" style="width: 100%;" id="floatingInput"
+                placeholder="Name" [(ngModel)]="name">
+            <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating" appearance="fill" style="margin-bottom: 10%;">
+            <input type="text" name="description" class="form-control" id="floatingInput" placeholder="Description"
+                [(ngModel)]="description">
+            <label for="floatingInput">Description</label>
+        </div>
+        <div class="form-floating" appearance="fill" style="margin-bottom: 10%;">
+            <textarea type="number" name="value" class="form-control" id="floatingInput" placeholder="Value"
+                [(ngModel)]="value"></textarea>
+            <label for="floatingInput">R$: </label>
+        </div>
+        <div class="form-floating" appearance="fill" style="margin-bottom: 10%;">
+            <input type="text" name="type" class="form-control" id="floatingInput" placeholder="Type"
+                [(ngModel)]="type">
+            <label for="floatingInput">Type</label>
+        </div>
+        <div style="margin: 5% 0 0 5%;">
+            <button type="button" class="btn btn-light" (click)="CreateProduct()" style="margin-bottom: 10%;">Create Product</button>
+        </div>
+    </form>
+</div>

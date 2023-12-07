@@ -17,6 +17,8 @@ export class TotemComponent {
   listproduct: any[] = [];
   listqty: ProductData[] = []
 
+  cart: ProductData[] = [];
+
   qty: Number = 0
 
   ngOnInit(): void {
@@ -26,9 +28,21 @@ export class TotemComponent {
     });
   }
 
-  addQuantity(event: any)
-	{
-		this.qty = eval(event.target.value);
-	}
+  addProductCarts(item: any) {
+    var qty = 0;
+    var tot = 0
+
+    this.cart.forEach((element) => {
+      if (element.name == item.name){
+        element.value
+      }
+    })
+
+
+  }
+
+  Cart(){
+    this.router.navigate(['admin/totem/cars']);
+  }
 
 }

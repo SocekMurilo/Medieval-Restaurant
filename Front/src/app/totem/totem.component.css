@@ -1,3 +1,7 @@
+.texttitle{
+    font-family: 'MedievalSharp', cursive;
+}
+
 
 .struct{
     display: flex;

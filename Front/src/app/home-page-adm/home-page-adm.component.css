@@ -2,6 +2,10 @@ body{
     background-color: green;
 }
 
+.texttitle{
+    font-family: 'MedievalSharp', cursive;
+}
+
 .struct{
     display: flex;
     justify-content: center;
@@ -9,7 +13,7 @@ body{
 }
 
 .title{
-    margin-top: 10%;
+    margin-top: 6%;
     color: white;
     font-size: 50px;
     margin-bottom: 5%;
@@ -51,8 +55,5 @@ nav{
 
 .btnstyle{
     background-color: #ffffff;
+    width: 40%;
 }
-
-/* .btn:hover{
-    background-color: #dadada;
-} */

@@ -2,6 +2,10 @@ body{
     background-color: green;
 }
 
+.texttitle{
+    font-family: 'MedievalSharp', cursive;
+}
+
 .struct{
     display: flex;
     justify-content: center;
@@ -9,7 +13,7 @@ body{
 }
 
 .title{
-    margin-top: 10%;
+    margin-top: 2%;
     color: white;
     font-size: 50px;
     margin-bottom: 5%;
@@ -41,4 +45,12 @@ body{
 
 .inputs{
     width: 100%;
+}
+
+.add{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
 }

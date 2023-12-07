@@ -1,28 +1,42 @@
 <header>
-    <div (click)="HomePage()" style="width: 100%; background-color: #281914; margin-bottom: 2%;" class="struct">
-        <img style="height: 12vh; width: 12vh; align-items: center;" src="../../assets/Logo.jfif" class="card-img-top"
-            alt="...">
+    <div style="width: 100%; background-color: #281914; margin-bottom: 2%;" class="struct">
+        <div class=" display: flex; justify-content: ">
+            <a href="" (click)="HomeAdm()">VOLTAR</a>
+        </div>
+        <div>
+            <img style="height: 12vh; width: 12vh; align-items: center;" src="../../assets/Logo.jfif" class="card-img-top"
+                alt="...">
+        </div>
+        
     </div>
     <div>
-        
-        <div style="margin: 5% 0 0 5%;">
-            <a class="btn btn-primary" style="width: 10%;" (click)="AddProduct()">Add Product</a>
-        </div>
-        <div class="container text-center" style="margin-top: 10%;">
+        <div class="title struct texttitle"> PROUDUCTS </div>
+        <div class="container text-center" style="margin-top: 2%;">
             <div class="row">
-                <div class="col-sm-3" *ngFor="let product of listproduct">
+                <div class="col-sm-3" *ngFor="let product of listproduct" style="margin-bottom: 2%;">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{product.name}}</h5>
+                            <div style="margin-bottom: 2%;">
+                                <img style="width: 100%; align-items: center;" src="../../assets/Sopa.png" class="card-img-top buttons"
+                                    alt="...">
+                            </div>
+                            <p class="card-title"><strong>{{product.name}}</strong></p>
                             <p>
                                 <label class="card-text">{{product.description}}
                                 </label>
                             </p>
                             <p>
-                                <label class="card-text">{{product.value}}
+                                <label class="card-text">R$: {{product.value}}
                                 </label>
                             </p>
                             <a class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" >
+                    <div class="card">
+                        <div class="card-body" style="width: 100%; height: 100%;">
+                            <a class="btn btn-primary" style="width: 80%; height: 100%;" (click)="AddProduct()">Add Product</a>
                         </div>
                     </div>
                 </div>

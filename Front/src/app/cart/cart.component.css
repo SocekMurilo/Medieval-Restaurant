@@ -1,0 +1,56 @@
+body{
+    background-color: green;
+}
+
+.texttitle{
+    font-family: 'MedievalSharp', cursive;
+}
+
+.struct{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    margin-top: 2%;
+    color: white;
+    font-size: 50px;
+    margin-bottom: 5%;
+}
+
+.button{
+    border-radius:  15px;
+    border: 2px solid black;
+    transition: 200ms;
+    margin-top: 3%;
+    background-color: #dadada;
+    width: 250%;
+    height: 200%;
+}
+
+.button:hover{
+    background-color: gray;
+    transition: 200ms;
+}
+
+.input{
+    width: 50%;
+    height: 5%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+
+.inputs{
+    width: 100%;
+}
+
+.add{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+}

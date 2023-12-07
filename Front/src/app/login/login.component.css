@@ -2,6 +2,10 @@ body{
     background-color: green;
 }
 
+.texttitle{
+    font-family: 'MedievalSharp', cursive;
+}
+
 .struct{
     display: flex;
     justify-content: center;
@@ -38,3 +42,5 @@ body{
     justify-content: center;
     width: 40%;
 }
+
+
