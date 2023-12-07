@@ -13,7 +13,7 @@ public partial class Order
 
     public double ValueOrder { get; set; }
 
-    public int UserId { get; set; }
+    public int? UserId { get; set; }
 
     public virtual ICollection<ProductOrder> ProductOrders { get; } = new List<ProductOrder>();
 

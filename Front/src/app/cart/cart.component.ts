@@ -34,12 +34,23 @@ export class CartComponent implements OnInit {
 
   }
 
-  AddQuantity() {
-    this.qty++;
+  AddQuantity(item: any) {
+    this.cart.forEach((element) => {
+      if (element.id == item.id)
+        element.quantity++;
+    })
   }
-  RemoveQuantity() {
-    this.qty--;
-  }
+  RemoveQuantity(item: any) {
+    this.cart.forEach((element, index) => {
+      if (element.id == item.id){
+        element.quantity--;
+        if (element.quantity < 1){
+          this.cart.splice(index, 1);
+        }
+      }
+
+  })
+}
 
   addOrder() {
     var listorder: any[] = [];
@@ -49,14 +60,13 @@ export class CartComponent implements OnInit {
     if (this.cart.length > 0) {
       this.cart.forEach((element) => {
         var item: any = {
-          name: element.name,
-          quantity: this.qty,
-          total: element.value * this.qty,
+          id: element.id,
+          quantity: element.quantity,
+          total: this.totalBuy
         };
         listorder.push(item);
       });
     }
-    console.log(listorder);
 
   }
   
@@ -64,7 +74,7 @@ export class CartComponent implements OnInit {
   updatePrice() {
     this.totalBuy = 0
     this.cart.forEach((element) => {
-      this.totalBuy += element.value + this.qty;
+      this.totalBuy += element.value + element.quantity;
     })
   }
 

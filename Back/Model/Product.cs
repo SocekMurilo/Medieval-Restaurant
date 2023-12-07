@@ -15,6 +15,8 @@ public partial class Product
 
     public string Type { get; set; }
 
+    public int Quantity { get; set; }
+
     public int? ImageId { get; set; }
 
     public virtual Image Image { get; set; }

@@ -68,13 +68,17 @@ export class NewProductDialog {
   description: string = '';
   value: number = 0;
   type: string = '';
+  quantity: number = 1
+  id: number = 0;
 
   CreateProduct() {
     this.product.CreateProduct({
+      id: this.id,
       name: this.name,
       description: this.description,
       value: this.value,
       type: this.type,
+      quantity: this.quantity,
     });
 
     this.dialogRef.close();

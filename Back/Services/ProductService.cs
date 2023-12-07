@@ -20,10 +20,12 @@ public class ProductService : IProductService
     {
         Product product = new Product();
 
+        product.Idproduct = data.Id;
         product.Name = data.Name;
         product.Description = data.Description;
         product.Value = data.Value;
         product.Type = data.Type;
+        product.Quantity = data.Quantity;
 
         this.ctx.Add(product);
         await this.ctx.SaveChangesAsync();

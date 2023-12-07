@@ -22,7 +22,7 @@
                                     <strong>{{product.name}}</strong>
                                 </p>
                                 <p style="margin-bottom: 10%;">
-                                    <label class="card-text"></label>
+                                    <label class="card-text">Quantity: {{product.quantity}}</label>
                                 </p>
                                 <p>
                                     <label class="card-text">R$: {{product.value}}</label>
@@ -30,10 +30,10 @@
                             </div>
                             <div class="col-4">
                                 <div style="margin-bottom: 10%; margin-top: 10%;;">
-                                    <a class="btn btn-primary" style=" width: 50%; background-color: #281914; border: #281914;" (click)="AddQuantity()">Add</a>
+                                    <a class="btn btn-primary" style=" width: 50%; background-color: #281914; border: #281914;" (click)="AddQuantity(product)">Add</a>
                                 </div>
                                 <div style="margin-bottom: 10%;">
-                                    <a class="btn btn-primary" style=" width: 50%; background-color: #281914; border: #281914;" (click)="RemoveQuantity()">Remove</a>
+                                    <a class="btn btn-primary" style=" width: 50%; background-color: #281914; border: #281914;" (click)="RemoveQuantity(product)">Remove</a>
                                 </div>
                                 <div>
                                     <a class="btn btn-primary" style=" width: 50%; background-color: #281914; border: #281914;">Ticket</a>

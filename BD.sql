@@ -33,7 +33,8 @@ create table Product(
 	Description varchar(200) not null,
 	Value Float not null,
 	Type varchar(50) not null,
-	ImageID int references Image(IDImage)
+	Quantity int not null,
+	ImageID int references Image(IDImage) null
 );
 go
 
@@ -43,15 +44,15 @@ create table Orders(
 	StartTime datetime not null,
 	Finish bit not null,
 	ValueOrder float not null,
-	UserID int references Users(IDUser) not null,
+	UserID int references Users(IDUser),
 );
 go
 
 create table ProductOrder(
 	IDProductOrder int identity primary key,
 	Quantity int not null,
-	OrderID int references Orders(IDOrder) not null,
-	ProductID int references Product(IDProduct) not null
+	OrderID int references Orders(IDOrder),
+	ProductID int references Product(IDProduct)
 );
 go
 
@@ -59,9 +60,12 @@ create table Promotion(
 	IDPromotion int identity primary key,
 	PromotionalKey varchar(50) not null,
 	NewValue Float not null,
-	ProductID int references Product(IDProduct) not null
+	ProductID int references Product(IDProduct)
 );
 go
 
 select * from Users
 select * from Product
+
+ALTER TABLE 
+ADD column_b VARCHAR(20)

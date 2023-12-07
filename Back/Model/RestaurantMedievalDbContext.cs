@@ -35,7 +35,7 @@ public partial class RestaurantMedievalDbContext : DbContext
     {
         modelBuilder.Entity<Image>(entity =>
         {
-            entity.HasKey(e => e.Idimage).HasName("PK__Image__365310E81F08F7AE");
+            entity.HasKey(e => e.Idimage).HasName("PK__Image__365310E8788EEB81");
 
             entity.ToTable("Image");
 
@@ -45,7 +45,7 @@ public partial class RestaurantMedievalDbContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.Idorder).HasName("PK__Orders__5CBBCADB3E75847D");
+            entity.HasKey(e => e.Idorder).HasName("PK__Orders__5CBBCADB441FFBDF");
 
             entity.Property(e => e.Idorder).HasColumnName("IDOrder");
             entity.Property(e => e.StartTime).HasColumnType("datetime");
@@ -53,13 +53,12 @@ public partial class RestaurantMedievalDbContext : DbContext
 
             entity.HasOne(d => d.User).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Orders__UserID__3E52440B");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.Idproduct).HasName("PK__Product__4290D179B13D25F3");
+            entity.HasKey(e => e.Idproduct).HasName("PK__Product__4290D1794A02D427");
 
             entity.ToTable("Product");
 
@@ -85,7 +84,7 @@ public partial class RestaurantMedievalDbContext : DbContext
 
         modelBuilder.Entity<ProductOrder>(entity =>
         {
-            entity.HasKey(e => e.IdproductOrder).HasName("PK__ProductO__9FA59CC0D9904958");
+            entity.HasKey(e => e.IdproductOrder).HasName("PK__ProductO__9FA59CC059CF89A2");
 
             entity.ToTable("ProductOrder");
 
@@ -95,18 +94,16 @@ public partial class RestaurantMedievalDbContext : DbContext
 
             entity.HasOne(d => d.Order).WithMany(p => p.ProductOrders)
                 .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__ProductOr__Order__412EB0B6");
 
             entity.HasOne(d => d.Product).WithMany(p => p.ProductOrders)
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__ProductOr__Produ__4222D4EF");
         });
 
         modelBuilder.Entity<Promotion>(entity =>
         {
-            entity.HasKey(e => e.Idpromotion).HasName("PK__Promotio__C76CC0D8AFEAAC97");
+            entity.HasKey(e => e.Idpromotion).HasName("PK__Promotio__C76CC0D853F8C120");
 
             entity.ToTable("Promotion");
 
@@ -119,13 +116,12 @@ public partial class RestaurantMedievalDbContext : DbContext
 
             entity.HasOne(d => d.Product).WithMany(p => p.Promotions)
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Promotion__Produ__44FF419A");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Iduser).HasName("PK__Users__EAE6D9DF891CD578");
+            entity.HasKey(e => e.Iduser).HasName("PK__Users__EAE6D9DF99827018");
 
             entity.Property(e => e.Iduser).HasColumnName("IDUser");
             entity.Property(e => e.Cpf)
