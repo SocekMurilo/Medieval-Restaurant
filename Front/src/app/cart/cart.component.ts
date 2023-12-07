@@ -35,6 +35,8 @@ export class CartComponent implements OnInit {
   }
 
   AddQuantity(item: any) {
+    var loadcart = localStorage.getItem('cart')
+
     this.cart.forEach((element) => {
       if (element.id == item.id)
         element.quantity++;
@@ -46,6 +48,8 @@ export class CartComponent implements OnInit {
         element.quantity--;
         if (element.quantity < 1){
           this.cart.splice(index, 1);
+          localStorage.setItem('cart', JSON.stringify(this.cancel))
+
         }
       }
 
@@ -76,6 +80,11 @@ export class CartComponent implements OnInit {
     this.cart.forEach((element) => {
       this.totalBuy += element.value + element.quantity;
     })
+  }
+
+  Cancel(){
+    localStorage.setItem('cart', JSON.stringify(this.cancel))
+    this.router.navigate(['/admin/totem'])
   }
 
 

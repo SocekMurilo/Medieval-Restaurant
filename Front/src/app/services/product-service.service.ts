@@ -17,7 +17,7 @@ export class ProductService {
   }
 
   GetProduct(){
-    var a =  this.http.get("product");
-    return a;
+    var get =  this.http.get("product");
+    return get;
   }
 }

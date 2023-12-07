@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from '../services/product-service.service';
 
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({

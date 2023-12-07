@@ -23,7 +23,7 @@ export const routes: Routes = [
         ]},
         {path: "orders", component: OrdersComponent}]},
     {path: 'user', component: HomePageUserComponent},
-    {path: 'ticket', component: PromotionsComponent},
+    {path: 'promotion', component: PromotionsComponent}
     
 ];
     

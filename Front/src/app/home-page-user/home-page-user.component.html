@@ -8,24 +8,23 @@
 <header>
     <div class="container text-center" style="margin-top: 10%;">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-3" *ngFor="let product of listproduct">
                 <div class="card">
                     <div class="card-body">
-                        <img src="https://4.bp.blogspot.com/-c0EJGrdyIq8/WFpCvIV_HtI/AAAAAAAAAro/jfU5GYJf9AYuMjGdnB3YJT3vcpFbLDFQgCLcB/s1600/Pottage.png" class="card-img-top" alt="...">
-                        <h5 class="card-title">Pottage</h5>
+                        <img style="width: 100%; align-items: center;" src="../../assets/Sopa.png" class="card-img-top buttons"
+                        alt="...">                        
+                        <p class="card-title">{{product.name}}</p>
                         <p>
-                            <label class="card-text">Vegetable and meat stew.
-                            </label>
+                            <label class="card-text">{{product.description}}</label>
                         </p>
-                        <a class="btn btn-primary">Edit</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="struct" style="margin-top: 5%;">
-        <div style="margin-right: 10%;">
-            <button type="button" class="btn btn-light" (click)="Ticket()">Ticket</button>
+        <div style="margin-right: 10%; margin-bottom: 2%;" >
+            <button type="button" class="btn btn-light" (click)="Promotion()">Promotions</button>
         </div>
     </div>
 </header>

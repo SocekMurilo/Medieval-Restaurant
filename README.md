@@ -24,7 +24,7 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] Porjeto do Frontend Angular Criado.
 - [X] Possui tela de Login.
 - [X] Possui tela de cadastro.
-- [ ] Possui tela de usuário normal das promoções.
+- [X] Possui tela de usuário normal das promoções.
 - [X] Possui tela para visualizar código da promoção.
 - [X] Possui tela de Administrador.
 - [X] Possui tela de Pedidos.
@@ -42,7 +42,7 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] Entity Framework Configurado no Backend e Model gerada.
 - [X] Bilbioteca de JWT instalada.
 - [X] Operação de cadastro realmente salva um usuário no banco de dados.
-- [ ] Cadastro tem algumas validações sendo mais robusto.
+- [X] Cadastro tem algumas validações sendo mais robusto.
 - [X] Login realmente busca usuário no banco de dados.
 - [X] Aplica salt na senha do usuário.
 - [X] Aplica slow Hash na senha do usuário.
@@ -55,7 +55,7 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [ ] Adm é capaz de ver Dashboard com dois gráficos de informações.
 - [ ] Gráficos do Dashboard realmente refletem os dados no banco.
 - [X] É possível ver produtos existentes no Totem.
-- [+] É possível adicionar itens em uma sacola.
+- [X] É possível adicionar itens em uma sacola.
 - [ ] Ao finalizar a compra o pedido é realmente registrado no banco de dados.
 - [ ] É possível ver o custo total do pedido.
 - [ ] É possível adicionar uma promoção com um código promocional.

@@ -6,25 +6,23 @@
 </nav>
 
 <header>
-    <div class="container text-center" style="margin-top: 10%;">
+    <div class="title struct texttitle "> PROMOTIONS </div>
+    <div class="container text-center">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card">
+            <div class="col-sm-3" *ngFor="let product of listproduct">
+                <div class="card" style="margin: 3%;">
                     <div class="card-body">
-                        <h5 class="card-title">Name Product</h5>
+                        <p class="card-title"><strong>{{product.name}}</strong></p>
                         <p>
-                            <label class="card-text">Description Product
-                            </label>
+                            <label class="card-text">{{product.description}}</label>
+                        </p>
+                        <p><label class="card-text">R$: {{product.value}}</label>
                         </p>
                         <p>
-                            <label class="card-text">Value
+                            <label class="card-text">{{product.type}}
                             </label>
                         </p>
-                        <p>
-                            <label class="card-text">Type
-                            </label>
-                        </p>
-                        <a class="btn btn-primary">Cupon</a>
+                        <a class="btn btn-primary" (click)="Ticket()">Ticket</a>
                     </div>
                 </div>
             </div>

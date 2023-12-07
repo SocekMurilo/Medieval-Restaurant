@@ -66,6 +66,3 @@ go
 
 select * from Users
 select * from Product
-
-ALTER TABLE 
-ADD column_b VARCHAR(20)
