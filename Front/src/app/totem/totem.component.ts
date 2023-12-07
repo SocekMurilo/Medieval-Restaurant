@@ -33,19 +33,21 @@ export class TotemComponent {
 
     this.cart.forEach((element) => {
       if (element.name == item.name){
-        element.quantity
+        element.quantity++;
         qty++;
       }
     })
 
-    var newcart = this.cart.push({
-        id: item.id,
-        name: item.name,
-        description: item.description,
-        value: item.value,
-        type: item.type,
-        quantity: item.quantity
-    });
+    if(qty == 0){
+      this.cart.push({
+          id: item.id,
+          name: item.name,
+          description: item.description,
+          value: item.value,
+          type: item.type,
+          quantity: item.quantity
+      });
+    } 
 
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }

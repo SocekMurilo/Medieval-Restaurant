@@ -38,9 +38,12 @@ export class CartComponent implements OnInit {
     var loadcart = localStorage.getItem('cart')
 
     this.cart.forEach((element) => {
-      if (element.id == item.id)
+      if (element.id == item.id){
         element.quantity++;
+        this.updatePrice();
+      }
     })
+    
   }
   RemoveQuantity(item: any) {
     this.cart.forEach((element, index) => {
@@ -49,7 +52,7 @@ export class CartComponent implements OnInit {
         if (element.quantity < 1){
           this.cart.splice(index, 1);
           localStorage.setItem('cart', JSON.stringify(this.cancel))
-
+          this.updatePrice();
         }
       }
 
@@ -78,8 +81,9 @@ export class CartComponent implements OnInit {
   updatePrice() {
     this.totalBuy = 0
     this.cart.forEach((element) => {
-      this.totalBuy += element.value + element.quantity;
+      this.totalBuy += element.value * element.quantity;
     })
+    this.totalBuy = parseFloat(this.totalBuy.toFixed(2));
   }
 
   Cancel(){
