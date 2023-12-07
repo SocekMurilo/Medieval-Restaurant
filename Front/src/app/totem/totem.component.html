@@ -36,10 +36,8 @@
                             <p>
                                 <label class="card-text">R$: {{product.value}}</label>
                             </p>
-                            <div style="display: flex; justify-content:space-between; align-items: center;">
-                                <a class="btn btn-primary">-</a>
-                                    <label class="card-text">{{product.qty}}</label>
-                                <a class="btn btn-primary">+</a>
+                            <div style="display: flex; justify-content:center; align-items: center;">
+                                <a class="btn btn-primary" (click)="addProductCarts(product)">Add in Cart</a>
                             </div>
                         </div>
                     </div>
@@ -51,7 +49,7 @@
                         <button style="width: 100%;" type="button" class="btn btn-light">Calcel</button>
                     </div>
                     <div class="col-4" >
-                        <button style="width: 100%;" (click)="Cart()" type="button" class="btn btn-light">Cart</button>
+                        <button style="width: 100%;" type="button" class="btn btn-light" (click)="Cart()" >Cart</button>
                     </div>
                 </div>
             </footer>

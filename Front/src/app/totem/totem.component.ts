@@ -30,19 +30,25 @@ export class TotemComponent {
 
   addProductCarts(item: any) {
     var qty = 0;
-    var tot = 0
 
     this.cart.forEach((element) => {
       if (element.name == item.name){
-        element.value
+        qty++;
       }
     })
 
+    var newcart = this.cart.push({
+        name: item.name,
+        description: item.description,
+        value: item.value,
+        type: item.type,
+    });
 
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   Cart(){
-    this.router.navigate(['admin/totem/cars']);
+    this.router.navigate(['admin/totem/cart']);
   }
 
 }
